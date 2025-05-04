@@ -7,154 +7,183 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        /* הגדרות עיצוב נוספות */
+        /* Styling - 2025 Style */
         body {
             font-family: 'Assistant', sans-serif;
-            background-color: #f9fafb; /* רקע אפור בהיר מאוד */
+            background-color: #fdfdfd;
+            color: #1a1a1a;
         }
-        /* הגדרת גובה מלא לכל שקף (מסך מלא) ומרכוז תוכן */
         .slide {
-            min-height: 100vh; /* גובה מינימלי של גובה המסך */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* מרכוז אנכי */
-            align-items: center; /* מרכוז אופקי */
-            padding: 4rem 2rem; /* ריווח פנימי גדול */
+            justify-content: center;
+            align-items: center;
+            padding: 5rem 2.5rem;
             box-sizing: border-box;
-            position: relative; /* נדרש למיקום הלוגואים הפינתיים */
-            border-bottom: 1px solid #e5e7eb; /* קו הפרדה עדין בין שקפים */
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
         }
         .slide:last-child {
-            border-bottom: none; /* הסרת קו תחתון מהשקף האחרון */
+            border-bottom: none;
         }
-        /* מיקום לוגואים פינתיים (לכל השקפים מלבד הראשון) */
         .logo-bezalel-corner {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            height: 40px; /* גובה לוגו בצלאל */
-            opacity: 0.8;
+            top: 2rem;
+            right: 2rem;
+            height: 45px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
         }
         .logo-yafo-corner {
             position: absolute;
-            top: 1.5rem;
-            left: 1.5rem;
-            height: 35px; /* גובה לוגו יפו */
-            opacity: 0.8;
+            top: 2rem;
+            left: 2rem;
+            height: 40px;
+            opacity: 0.7;
+             transition: opacity 0.3s ease;
         }
-        /* היפוך צבעי הלוגו של בצלאל לרקעים כהים */
+        .slide:hover .logo-bezalel-corner,
+        .slide:hover .logo-yafo-corner {
+             opacity: 1;
+        }
         .logo-bezalel-inverted {
-             filter: invert(1) brightness(2); /* הופך שחור ללבן ומבהיר מעט */
+             filter: invert(1) brightness(2);
         }
 
-        /* עיצוב כותרות */
         h1, h2, h3 {
             text-align: center;
+            font-weight: 800;
         }
-        h1 { /* כותרת הצעה ראשית */
-            font-size: 2.5rem; /* גודל מותאם */
-            font-weight: 700; /* משקל עבה */
-            margin-bottom: 1rem;
-            color: #ffffff; /* צבע לבן */
-        }
-        h2 { /* כותרות נושאים */
-            font-size: 2.25rem; /* גודל כותרת משנה */
-            font-weight: 700;
-            margin-bottom: 2.5rem; /* מרווח גדול מתחת לכותרת משנה */
-        }
-        h3 { /* כותרות משנה בתוך נושא */
-            font-size: 1.875rem; /* גודל כותרת שלישונית */
-            font-weight: 700;
+        h1 {
+            font-size: 3.2rem;
             margin-bottom: 1.5rem;
-            color: #1f2937; /* צבע אפור כהה */
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
-        /* עיצוב טבלאות */
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+        }
+        h3 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #2c2c2c;
+        }
+        p, li, td, th {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
         table {
             width: 100%;
-            max-width: 900px; /* רוחב מקסימלי לטבלה */
-            margin-top: 1.5rem;
-            border-collapse: collapse;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* צל עדין */
-            border-radius: 0.5rem; /* פינות מעוגלות */
-            overflow: hidden; /* להחלת הפינות המעוגלות */
+            max-width: 950px;
+            margin-top: 2rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background-color: #ffffff;
         }
         th, td {
-            border: 1px solid #e5e7eb; /* גבולות תאים */
-            padding: 0.75rem 1rem; /* ריווח פנימי */
-            text-align: right; /* יישור לימין */
-            font-size: 0.95rem;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 1rem 1.25rem;
+            text-align: right;
         }
         th {
-            background-color: #f3f4f6; /* רקע כותרות טבלה */
-            font-weight: 700; /* משקל עבה לכותרות */
+            background-color: #f8f9fa;
+            font-weight: 700;
+            color: #333;
+            border-top: 1px solid #f0f0f0;
         }
-        tbody tr:nth-child(even) {
-            background-color: #f9fafb; /* צבע שונה לשורות זוגיות */
+        td {
+             color: #444;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
         }
         tbody tr:hover {
-            background-color: #eff6ff; /* רקע בהיר במעבר עכבר */
+            background-color: #f1f8ff;
         }
-        /* עיצוב רשימות יתרונות */
         .advantages-list {
             list-style: none;
             padding: 0;
-            max-width: 700px; /* רוחב מקסימלי לרשימה */
-            margin: 0 auto; /* מרכוז הרשימה */
+            max-width: 750px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
         }
         .advantages-list li {
-            background-color: #ffffff; /* רקע לבן לכל פריט */
-            padding: 1rem 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 0.375rem; /* פינות מעוגלות */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            border-right: 4px solid #2dd4bf; /* פס צד בצבע תכלת (yafo.ai) */
+            background-color: #ffffff;
+            padding: 1.5rem 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            border: 1px solid #eee;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
         }
+         .advantages-list li:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+         }
         .advantages-list li strong {
-            color: #111827; /* צבע כהה יותר להדגשה */
+            color: #047857;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
-        /* סגנונות ספציפיים לשקפים */
-         .slide-opening-logos { /* שקף פתיחה עם לוגואים בלבד */
-            background-color: #ffffff; /* רקע לבן */
+         .slide-opening-logos {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
          }
-         .slide-opening-logos img { /* הגדלה ומרכוז הלוגואים בשקף הפתיחה */
-            height: 80px; /* גובה גדול יותר */
-            margin-bottom: 2rem; /* מרווח בין הלוגואים */
-            position: static; /* ביטול מיקום אבסולוטי */
+         .slide-opening-logos img {
+            height: 90px;
+            margin-bottom: 2.5rem;
+            position: static;
             opacity: 1;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
          }
-        .slide-proposal-title { /* שקף כותרת ההצעה */
-            background-color: #111827; /* רקע שחור-אפור */
-            color: #ffffff; /* טקסט לבן */
+        .slide-proposal-title {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: #ffffff;
         }
-        .slide-intro { /* שקף כותרת ביניים לנושאים */
-             background-color: #e0f7fa; /* רקע תכלת בהיר (yafo.ai) */
+        .slide-intro {
+             background: linear-gradient(135deg, #e0f7fa 0%, #caf0f8 100%);
         }
          .slide-intro h2 {
-             color: #047857; /* צבע ירוק-כחול כהה */
+             color: #0077b6;
+             text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
          }
-         .slide-summary { /* שקף סיכום */
-            background-color: #1f2937; /* רקע אפור כהה */
+         .slide-summary {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
             color: #ffffff;
          }
          .slide-summary h2 {
             color: #ffffff;
-            margin-bottom: 2rem;
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
          }
          .slide-summary p {
-             max-width: 700px;
-             font-size: 1.25rem;
-             line-height: 1.7;
-             margin-bottom: 1.5rem;
+             max-width: 750px;
+             font-size: 1.35rem;
+             line-height: 1.8;
+             margin-bottom: 2rem;
+             color: #e2e8f0;
          }
          .slide-summary .call-to-action {
-            font-weight: 700;
-            color: #67e8f9; /* צבע תכלת זוהר להצעה */
-            font-size: 1.35rem;
+            font-weight: 800;
+            color: #90cdf4;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+         }
+         .slide-questions h2 {
+             font-size: 3.5rem;
+             color: #4a5568;
          }
 
     </style>
@@ -162,28 +191,28 @@
 <body class="bg-gray-100">
 
     <section class="slide slide-opening-logos">
-        <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" />
-        <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" />
+        <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" />
+        <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" />
     </section>
 
     <section class="slide slide-proposal-title">
-        <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner logo-bezalel-inverted" />
-        <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+        <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner logo-bezalel-inverted" />
+        <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
         <div class="text-center">
-            <h1 class="text-4xl font-bold">הצעה להקמת קייטנות AI קיץ לילדים - קיץ 2026</h1>
+            <h1 class="text-5xl font-extrabold">הצעה להקמת קייטנות AI קיץ לילדים - קיץ 2026</h1>
         </div>
     </section>
 
     <section class="slide slide-intro">
-         <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
-         <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
-         <h2 class="text-4xl font-bold">יתרונות מובהקים</h2>
+         <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
+         <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+         <h2 class="text-5xl font-extrabold">יתרונות מובהקים</h2>
     </section>
 
     <section class="slide">
-         <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
-         <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
-         <h3 class="text-3xl font-bold mb-8">מיתוג, הכנסות וחשיפה</h3>
+         <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
+         <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+         <h3 class="text-4xl font-bold mb-10">מיתוג, הכנסות וחשיפה</h3>
          <ul class="advantages-list">
             <li><strong>מיתוג חלוצי</strong> - מציב את בצלאל כקמפוס האמנות הראשון בישראל שמוביל חינוך יצירתי המשלב בינה.</li>
             <li><strong>הכנסות בחופשת הקיץ</strong> - ניצול מתקנים ריקים בחודשים המתים. דמי השתתפות + חסויות מחברות הייטק.</li>
@@ -192,9 +221,9 @@
     </section>
 
     <section class="slide">
-        <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
-        <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
-        <h3 class="text-3xl font-bold mb-8">קהילה, עתיד ורלוונטיות</h3>
+        <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
+        <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+        <h3 class="text-4xl font-bold mb-10">קהילה, עתיד ורלוונטיות</h3>
          <ul class="advantages-list">
             <li><strong>שילוב קהילת התלמידים/בוגרים</strong> - הזמנה של בוגרי המחלקות והתלמידים לשמש במנטורים.</li>
             <li><strong>גיוון תלמידים ובניית קשר עתידי</strong> - קהל חדש של משפחות עם נטייה טכנולוגית, הגדלת הרשמה עתידית למחלקה לאמנות.</li>
@@ -204,16 +233,17 @@
     </section>
 
      <section class="slide slide-intro">
-         <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
-         <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
-         <h2 class="text-4xl font-bold">דוגמאות למסלולי הרפתקאות</h2>
+         <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
+         <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+         <h2 class="text-5xl font-extrabold">דוגמאות למסלולי הרפתקאות</h2>
     </section>
 
     <section class="slide">
-        <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
-        <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
-        <h3 class="text-3xl font-bold mb-6">מסלולים, תוצרים וכישורים</h3>
-        <div class="overflow-x-auto w-full max-w-4xl"> <table>
+        <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
+        <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+        <h3 class="text-4xl font-bold mb-8">מסלולים, תוצרים וכישורים</h3>
+        <div class="overflow-x-auto w-full max-w-5xl">
+            <table>
                 <thead>
                     <tr>
                         <th>מסלול</th>
@@ -229,7 +259,8 @@
                         <td>ספר מודפס + גרסה דיגיטלית מוקלטת</td>
                         <td>כתיבה, סטוריבורד, VO</td>
                         <td>סדנת איור ידני, רישום מודל חי</td>
-                        <td>ChatGPT, ElevenLabs</td> </tr>
+                        <td>ChatGPT, ElevenLabs</td>
+                    </tr>
                     <tr>
                         <td>Game-Jam</td>
                         <td>משחק 2D/3D קצר</td>
@@ -257,10 +288,10 @@
     </section>
 
      <section class="slide">
-        <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
-        <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
-        <h3 class="text-3xl font-bold mb-6">תחזית ממוספרת לשנה א׳</h3>
-         <div class="overflow-x-auto w-full max-w-4xl">
+        <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
+        <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+        <h3 class="text-4xl font-bold mb-8">תחזית ממוספרת לשנה א׳</h3>
+         <div class="overflow-x-auto w-full max-w-5xl">
             <table>
                  <thead>
                     <tr>
@@ -279,7 +310,8 @@
                         <td>393 k</td>
                         <td>105 k</td>
                     </tr>
-                     <tr class="bg-blue-50"> <td>בסיס (סביר)</td>
+                     <tr class="bg-sky-50">
+                        <td>בסיס (סביר)</td>
                         <td>270</td>
                         <td>90</td>
                         <td>506 k</td>
@@ -295,14 +327,14 @@
                 </tbody>
             </table>
         </div>
-        <p class="text-sm text-gray-600 mt-4">* רווח תפעולי לפני הוצאות תקורה. הערכה ראשונית.</p>
+        <p class="text-base text-gray-500 mt-5">* רווח תפעולי לפני הוצאות תקורה. הערכה ראשונית.</p>
     </section>
 
      <section class="slide slide-summary">
-         <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner logo-bezalel-inverted" />
-        <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
-        <h2 class="text-4xl font-bold">יוצאים לדרך!</h2>
-        <p class="text-center text-lg mb-6">
+         <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner logo-bezalel-inverted" />
+        <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+        <h2 class="text-5xl font-extrabold">יוצאים לדרך!</h2>
+        <p class="text-center text-xl mb-8">
             קייטנות AI בבצלאל הן הזדמנות ייחודית למיתוג חלוצי, יצירת הכנסות, חיזוק הקהילה ובניית גשר לעתיד החינוך לאמנות.
         </p>
         <p class="text-center call-to-action">
@@ -310,11 +342,12 @@
         </p>
     </section>
 
-    <section class="slide">
-        <img src="https://be.bezalel.ac.il/wp-content/uploads/2019/04/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
-        <img src="https://drive.usercontent.google.com/download?id=1B23zL8Gv8CWxRGYBZ1UKQgFqu-2tLkIe&authuser=0" alt="לוגו yafo.ai" class="logo-yafo-corner" />
-        <h2 class="text-5xl font-bold text-gray-700">שאלות?</h2>
-        </section>
+    <section class="slide slide-questions">
+        <img src="https://raw.githubusercontent.com/etaynaor/beza/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/%D7%91%D7%A6%D7%9C%D7%90%D7%9C-%D7%9C%D7%99%D7%9E%D7%95%D7%93%D7%99-%D7%97%D7%95%D7%A5-%D7%95%D7%94%D7%9E%D7%A9%D7%9A-%D7%9C%D7%95%D7%92%D7%95.svg" alt="לוגו בצלאל" class="logo-bezalel-corner" />
+        <img src="https://github.com/etaynaor/beza/blob/4fed8a2ad1f009d4b6f72f673629dcbdb5a552c6/images/yafo.png?raw=true" alt="לוגו yafo.ai" class="logo-yafo-corner" />
+        <h2 class="text-6xl font-extrabold text-gray-600">שאלות?</h2>
+        <p class="mt-6 text-lg text-gray-500">לפרטים נוספים: [שם איש קשר] | [כתובת מייל] | [מספר טלפון]</p>
+    </section>
 
 </body>
 </html>
